@@ -1,12 +1,14 @@
 package com.mis.route.e_commerce.ui.activities.auth
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.mis.route.e_commerce.R
 import com.mis.route.e_commerce.databinding.ActivityAuthBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AuthActivity : AppCompatActivity() {
     private var _binding: ActivityAuthBinding? = null
     private val binding get() = _binding!!

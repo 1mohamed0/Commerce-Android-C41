@@ -12,8 +12,10 @@ import android.view.WindowInsets
 import androidx.appcompat.app.AppCompatActivity
 import com.mis.route.e_commerce.databinding.ActivitySplashBinding
 import com.mis.route.e_commerce.ui.activities.auth.AuthActivity
+import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("CustomSplashScreen")
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
     private var _binding: ActivitySplashBinding? = null
     private val binding get() = _binding!!

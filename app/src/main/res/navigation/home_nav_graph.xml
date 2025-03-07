@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.mis.route.e_commerce.ui.activities.home.fragments.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.mis.route.e_commerce.ui.activities.home.fragments.categories.CategoriesFragment"

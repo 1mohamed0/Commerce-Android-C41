@@ -9,7 +9,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.mis.route.e_commerce.R
 import com.mis.route.e_commerce.databinding.ActivityHomeBinding
 import com.mis.route.e_commerce.ui.activities.cart.CartActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     private var _binding: ActivityHomeBinding? = null
     private val binding get() = _binding!!

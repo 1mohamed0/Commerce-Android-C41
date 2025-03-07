@@ -2,15 +2,17 @@ package com.mis.route.e_commerce.ui.activities.auth.fragments.login
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.mis.route.e_commerce.R
 import com.mis.route.e_commerce.databinding.FragmentLoginBinding
 import com.mis.route.e_commerce.ui.activities.home.HomeActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
@@ -26,8 +28,8 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toRegisterBtn.setOnClickListener { navigateToRegister() }
-        binding.fakeLoginBtn.setOnClickListener { fakeLogin() }
+        binding.donTHaveAnAccountTv.setOnClickListener { navigateToRegister() }
+        binding.loginBtn.setOnClickListener { fakeLogin() }
     }
 
     private fun fakeLogin() {

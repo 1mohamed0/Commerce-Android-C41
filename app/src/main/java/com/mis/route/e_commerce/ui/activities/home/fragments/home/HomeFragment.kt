@@ -15,13 +15,15 @@ import com.mis.route.domain.models.product.Product
 import com.mis.route.domain.models.subcategory.SubCategory
 import com.mis.route.e_commerce.R
 import com.mis.route.e_commerce.databinding.FragmentHomeBinding
-import com.mis.route.e_commerce.ui.utils.UIConstants.whenViewIsShown
 import com.mis.route.e_commerce.ui.activities.home.fragments.home.adapter.CategoriesRecyclerAdapter
 import com.mis.route.e_commerce.ui.activities.home.fragments.home.adapter.OfferViewPagerAdapter
 import com.mis.route.e_commerce.ui.activities.home.fragments.home.adapter.ProductsRecyclerAdapter
+import com.mis.route.e_commerce.ui.utils.UIConstants.whenViewIsShown
+import dagger.hilt.android.AndroidEntryPoint
 
 
 @SuppressLint("NotifyDataSetChanged")
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!

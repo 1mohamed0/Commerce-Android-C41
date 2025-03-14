@@ -5,6 +5,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.ShimmerDrawable
+import com.google.android.material.textfield.TextInputLayout
 
 @BindingAdapter("imageResource")
 fun setImageResource(imageView: ImageView, resource: Int) {
@@ -31,4 +32,10 @@ fun setImageFromUrl(imageView: ImageView, url: String?) {
         .load(url)
         .placeholder(shimmerDrawable)
         .into(imageView)
+}
+
+
+@BindingAdapter("error")
+fun setError(textInputLayout: TextInputLayout, error: String?) {
+    textInputLayout.error = error
 }

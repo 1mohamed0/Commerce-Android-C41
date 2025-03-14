@@ -27,7 +27,7 @@ object NetworkModule {
     ): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("asdkas")
+            .baseUrl("https://ecommerce.routemisr.com")
             .addConverterFactory(gsonConverterFactory)
             .build()
     }

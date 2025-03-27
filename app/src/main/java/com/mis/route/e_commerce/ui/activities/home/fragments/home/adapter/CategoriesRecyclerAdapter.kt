@@ -4,10 +4,10 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mis.route.domain.models.category.Category
 import com.mis.route.e_commerce.databinding.ItemCategoryCircularBinding
+import com.mis.route.e_commerce.domain.model.Category
 
-class CategoriesRecyclerAdapter(var categoriesList: List<Category?>?) :
+class CategoriesRecyclerAdapter(var categoriesList: List<Category>?) :
     RecyclerView.Adapter<CategoriesRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: ItemCategoryCircularBinding) : RecyclerView.ViewHolder(binding.root) {

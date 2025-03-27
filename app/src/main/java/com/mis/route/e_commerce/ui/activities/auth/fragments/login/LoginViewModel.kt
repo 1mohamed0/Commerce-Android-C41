@@ -19,7 +19,7 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
     var emailError = MutableLiveData("")
     var passwordError = MutableLiveData("")
     fun login() {
-        Log.e("LoginViewModel", "login click")
+        loginApiState.value = Resource.LoadingState()
         viewModelScope.launch {
             when (val result = loginUseCase.execute(
                 emailLiveData.value!!,

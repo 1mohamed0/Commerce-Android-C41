@@ -7,7 +7,7 @@
 
         <variable
             name="sub_category"
-            type="com.mis.route.domain.models.subcategory.SubCategory" />
+            type="com.mis.route.e_commerce.domain.model.Category" />
 
     </data>
 

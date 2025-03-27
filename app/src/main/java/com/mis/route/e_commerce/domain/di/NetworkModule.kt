@@ -50,4 +50,5 @@ object NetworkModule {
     fun provideConnectivityChecker(@ApplicationContext context: Context): ConnectivityChecker {
         return ConnectivityChecker(context)
     }
+
 }

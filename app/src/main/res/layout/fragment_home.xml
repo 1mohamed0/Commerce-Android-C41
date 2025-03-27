@@ -1,160 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.activities.home.fragments.home.HomeFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.activities.home.fragments.home.HomeFragment">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/offers_view_pager"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:background="@drawable/image_tools_offer_preview" />
+            android:layout_height="wrap_content">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="@id/offers_view_pager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:tabBackground="@drawable/selector_viewpager_dot"
-            app:tabGravity="center"
-            app:tabIndicatorHeight="0dp" />
-
-        <TextView
-            android:id="@+id/categories_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/categories"
-            android:textAppearance="@style/home_titles"
-            app:layout_constraintStart_toStartOf="@id/offers_view_pager"
-            app:layout_constraintTop_toBottomOf="@id/offers_view_pager" />
-
-        <TextView
-            android:id="@+id/view_all_categories_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/view_all"
-            android:textAppearance="@style/home_text"
-            app:layout_constraintEnd_toEndOf="@id/offers_view_pager"
-            app:layout_constraintTop_toBottomOf="@id/offers_view_pager" />
-
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/categories_recycler_view_shimmer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="@id/offers_view_pager"
-            app:layout_constraintTop_toBottomOf="@id/categories_textview">
-
-            <LinearLayout
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/offers_view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="@drawable/image_tools_offer_preview" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="@id/offers_view_pager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:tabBackground="@drawable/selector_viewpager_dot"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp" />
+
+            <TextView
+                android:id="@+id/categories_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/categories"
+                android:textAppearance="@style/home_titles"
+                app:layout_constraintStart_toStartOf="@id/offers_view_pager"
+                app:layout_constraintTop_toBottomOf="@id/offers_view_pager" />
+
+            <TextView
+                android:id="@+id/view_all_categories_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/view_all"
+                android:textAppearance="@style/home_text"
+                app:layout_constraintEnd_toEndOf="@id/offers_view_pager"
+                app:layout_constraintTop_toBottomOf="@id/offers_view_pager" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/categories_recycler_view_shimmer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@id/offers_view_pager"
+                app:layout_constraintTop_toBottomOf="@id/categories_textview">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <include layout="@layout/item_category_circular" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <include layout="@layout/item_category_circular" />
+                        <include layout="@layout/item_category_circular" />
 
-                    <include layout="@layout/item_category_circular" />
+                        <include layout="@layout/item_category_circular" />
 
-                    <include layout="@layout/item_category_circular" />
+                        <include layout="@layout/item_category_circular" />
+
+                        <include layout="@layout/item_category_circular" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <include layout="@layout/item_category_circular" />
+
+                        <include layout="@layout/item_category_circular" />
+
+                        <include layout="@layout/item_category_circular" />
+
+                        <include layout="@layout/item_category_circular" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categories_recycler_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintStart_toStartOf="@id/offers_view_pager"
+                app:layout_constraintTop_toBottomOf="@id/categories_textview"
+                app:spanCount="2"
+                tools:listitem="@layout/item_category_circular" />
+
+            <TextView
+                android:id="@+id/laps_accessories_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/laptops_and_accessories"
+                android:textAppearance="@style/home_titles"
+                app:layout_constraintStart_toStartOf="@id/offers_view_pager"
+                app:layout_constraintTop_toBottomOf="@id/categories_recycler_view_shimmer" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/laps_accessories_recycler_view_shimmer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@id/offers_view_pager"
+                app:layout_constraintTop_toBottomOf="@id/laps_accessories_textview">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                    <include layout="@layout/item_category_circular" />
+                    <include layout="@layout/item_product" />
 
-                    <include layout="@layout/item_category_circular" />
+                    <include layout="@layout/item_product" />
 
-                    <include layout="@layout/item_category_circular" />
-
-                    <include layout="@layout/item_category_circular" />
+                    <include layout="@layout/item_product" />
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
-        </com.facebook.shimmer.ShimmerFrameLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/laps_accessories_recycler_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="@id/offers_view_pager"
+                app:layout_constraintTop_toBottomOf="@id/laps_accessories_textview"
+                tools:listitem="@layout/item_product" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/categories_recycler_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintStart_toStartOf="@id/offers_view_pager"
-            app:layout_constraintTop_toBottomOf="@id/categories_textview"
-            app:spanCount="2"
-            tools:listitem="@layout/item_category_circular" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/laps_accessories_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/laptops_and_accessories"
-            android:textAppearance="@style/home_titles"
-            app:layout_constraintStart_toStartOf="@id/offers_view_pager"
-            app:layout_constraintTop_toBottomOf="@id/categories_recycler_view_shimmer" />
-
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/laps_accessories_recycler_view_shimmer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="@id/offers_view_pager"
-            app:layout_constraintTop_toBottomOf="@id/laps_accessories_textview">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <include layout="@layout/item_product" />
-
-                <include layout="@layout/item_product" />
-
-                <include layout="@layout/item_product" />
-
-            </LinearLayout>
-
-        </com.facebook.shimmer.ShimmerFrameLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/laps_accessories_recycler_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toStartOf="@id/offers_view_pager"
-            app:layout_constraintTop_toBottomOf="@id/laps_accessories_textview"
-            tools:listitem="@layout/item_product" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+    </ScrollView>
+</layout>

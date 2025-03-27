@@ -1,21 +1,35 @@
 package com.mis.route.e_commerce.ui.activities.home.fragments.categories
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.mis.route.e_commerce.R
+import com.mis.route.e_commerce.databinding.FragmentCategoriesBinding
+import com.mis.route.e_commerce.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CategoriesFragment : Fragment() {
+class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>() {
+    private val categoriesVM by viewModels<CategoriesViewModel>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_categories, container, false)
+    override fun getLayoutId(): Int = R.layout.fragment_categories
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        categoriesVM.loadCategories()
+
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpObservers()
+
+    }
+
+    private fun setUpObservers() {
+        categoriesVM.categoriesApi.observe(viewLifecycleOwner) {
+
+        }
+    }
+
 }

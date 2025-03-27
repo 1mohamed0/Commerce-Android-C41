@@ -6,5 +6,6 @@ sealed class AppErrors(val errorMessage: String) {
 
     class LoginRequired(errorMessage: String) : AppErrors(errorMessage)
     class IgnoredErrors(errorMessage: String) : AppErrors(errorMessage)
-    class ServerError(errorMessage: String) : AppErrors(errorMessage)
+    class ServerError(errorMessage: String = "Something went wrong please try again later") :
+        AppErrors(errorMessage)
 }

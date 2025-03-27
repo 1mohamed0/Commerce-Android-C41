@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="product"
-            type="com.mis.route.domain.models.product.Product" />
+            type="com.mis.route.e_commerce.domain.model.Product" />
     </data>
 
     <!--    -->
@@ -30,6 +29,17 @@
                 app:imageFromUrl="@{product.imageCover}"
                 tools:src="@drawable/image_home_appliance_1" />
 
+            <TextView
+                android:id="@+id/productName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{product.title}"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="@id/product_cover"
+                app:layout_constraintStart_toStartOf="@id/product_cover"
+                app:layout_constraintTop_toBottomOf="@id/product_cover"
+
+                />
             <ImageView
                 android:id="@+id/add_to_favorites"
                 android:layout_width="wrap_content"

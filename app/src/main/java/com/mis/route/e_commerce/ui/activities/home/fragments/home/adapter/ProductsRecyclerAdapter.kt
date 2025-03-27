@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.mis.route.domain.models.product.Product
 import com.mis.route.e_commerce.databinding.ItemProductBinding
+import com.mis.route.e_commerce.domain.model.Product
 
 class ProductsRecyclerAdapter(var productsList: List<Product?>?) :
     RecyclerView.Adapter<ProductsRecyclerAdapter.ViewHolder>() {

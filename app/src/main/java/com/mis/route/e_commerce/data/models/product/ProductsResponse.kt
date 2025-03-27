@@ -1,7 +1,11 @@
-package com.mis.route.domain.models.product
+package com.mis.route.e_commerce.data.models.product
+
+import com.google.gson.annotations.SerializedName
+import com.mis.route.e_commerce.data.models.common.Metadata
 
 data class ProductsResponse(
     val results: Int? = null,
     val metadata: Metadata? = null,
-    val data: List<Product?>? = null
+    @SerializedName("data")
+    val products: List<ProductDM>? = null
 )

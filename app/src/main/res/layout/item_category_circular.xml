@@ -7,7 +7,7 @@
 
         <variable
             name="category"
-            type="com.mis.route.domain.models.category.Category" />
+            type="com.mis.route.e_commerce.domain.model.Category" />
     </data>
 
     <LinearLayout

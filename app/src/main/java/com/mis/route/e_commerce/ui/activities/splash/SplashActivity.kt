@@ -6,13 +6,17 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowInsets
 import androidx.appcompat.app.AppCompatActivity
+import com.mis.route.e_commerce.data.utils.PrefsHelper
 import com.mis.route.e_commerce.databinding.ActivitySplashBinding
 import com.mis.route.e_commerce.ui.activities.auth.AuthActivity
+import com.mis.route.e_commerce.ui.activities.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
@@ -20,6 +24,9 @@ class SplashActivity : AppCompatActivity() {
     private var _binding: ActivitySplashBinding? = null
     private val binding get() = _binding!!
     private val hideHandler = Handler(Looper.myLooper()!!)
+
+    @Inject
+    lateinit var prefsHelper: PrefsHelper
 
     @Suppress("DEPRECATION")
     @SuppressLint("InlinedApi")
@@ -78,7 +85,22 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         fullScreenSetup()
-        navigateToAuth()
+        val token = prefsHelper.getToken()
+        Log.e("Splash", "token = ${token}")
+        if (token.isNullOrEmpty()) {
+            navigateToAuth()
+        } else {
+            navigateToHome()
+        }
+
+    }
+
+    private fun navigateToHome() {
+        Handler(mainLooper).postDelayed({
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 2000)
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -93,7 +115,6 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun navigateToAuth() {
-        // TODO: navigate to home for now, edit later
         Handler(mainLooper).postDelayed({
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)

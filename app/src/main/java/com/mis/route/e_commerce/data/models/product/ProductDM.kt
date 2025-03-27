@@ -1,15 +1,12 @@
-package com.mis.route.domain.models.product
+package com.mis.route.e_commerce.data.models.product
 
-import com.mis.route.domain.models.brand.Brand
-import com.mis.route.domain.models.category.Category
-import com.mis.route.domain.models.subcategory.SubCategory
+import com.mis.route.e_commerce.data.models.category.CategoryDM
 
 
-data class Product(
+data class ProductDM(
     val sold: Int? = null,
     val images: List<String?>? = null,
     val quantity: Int? = null,
-    val availableColors: List<Any?>? = null,
     val imageCover: String? = null,
     val description: String? = null,
     val title: String? = null,
@@ -18,10 +15,9 @@ data class Product(
     val createdAt: String? = null,
     val price: Int? = null,
     val id: String? = null,
-    val subcategory: List<SubCategory?>? = null,
-    val category: Category? = null,
-    val brand: Brand? = null,
+    val subcategory: List<CategoryDM?>? = null,
+    val category: CategoryDM? = null,
+    val brand: CategoryDM? = null,
     val slug: String? = null,
     val updatedAt: String? = null,
-    val priceAfterDiscount: Int? = null
 )

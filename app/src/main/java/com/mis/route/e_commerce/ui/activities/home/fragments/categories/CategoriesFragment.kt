@@ -20,8 +20,8 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        categoriesVM.loadCategories()
-
+//        categoriesVM.loadCategories()
+        categoriesVM.doAction(CategoriesActions.LoadCategories)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,23 +41,22 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>() {
 
     private fun initCategoriesRecyclerView() {
         categoriesAdapter = CategoriesAdapter {
-            categoriesVM.loadSubCategories(it.id)
+//            categoriesVM.loadSubCategories()
+            categoriesVM.doAction(CategoriesActions.LoadSubCategories(it.id))
         }
         binding!!.categoriesRv.adapter = categoriesAdapter
     }
 
     private fun setUpObservers() {
-        categoriesVM.categoriesApi.observe(viewLifecycleOwner) {
-            when (it) {
-                is Resource.ErrorState -> handleError(it.error)
-                is Resource.SuccessState -> bindCategories(it.data)
+        categoriesVM.onEvent.observe(viewLifecycleOwner) {
+            when (it.categoriesApi) {
+                is Resource.ErrorState -> handleError(it.categoriesApi.error)
+                is Resource.SuccessState -> bindCategories(it.categoriesApi.data)
                 else -> {}
             }
-        }
-        categoriesVM.subCategoriesApi.observe(viewLifecycleOwner) {
-            when (it) {
-                is Resource.ErrorState -> handleError(it.error)
-                is Resource.SuccessState -> bindSubCategories(it.data)
+            when (it.subCategoriesApi) {
+                is Resource.ErrorState -> handleError(it.subCategoriesApi.error)
+                is Resource.SuccessState -> bindSubCategories(it.subCategoriesApi.data)
                 else -> {}
             }
         }
@@ -73,9 +72,14 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>() {
         binding!!.categoriesShimmerViewContainer.stopShimmer()
         categories?.let {
             categoriesAdapter.setCategories(it)
-            categoriesVM.loadSubCategories(categories[0].id)
-        }
+            if (!(categoriesVM.onEvent.value?.subCategoriesApi is Resource.SuccessState
+                        || categoriesVM.onEvent.value?.subCategoriesApi is Resource.LoadingState)
+            ) {
+//
+                categoriesVM.doAction(CategoriesActions.LoadSubCategories(categories[0].id))
+            }
 
+        }
     }
 
 }

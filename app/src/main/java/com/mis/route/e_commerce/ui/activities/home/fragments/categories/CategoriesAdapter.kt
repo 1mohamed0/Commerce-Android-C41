@@ -10,7 +10,7 @@ import com.mis.route.e_commerce.databinding.ItemCategoryRectangularBinding
 import com.mis.route.e_commerce.domain.model.Category
 
 class CategoriesAdapter(
-    private var data: List<Category> = emptyList(),
+    var data: List<Category> = emptyList(),
     val onCategoryClick: (Category) -> Unit
 ) :
     Adapter<CategoriesAdapter.CategoryViewHolder>() {

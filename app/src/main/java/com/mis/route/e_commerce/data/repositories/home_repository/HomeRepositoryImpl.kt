@@ -39,11 +39,7 @@ class HomeRepositoryImpl @Inject constructor(
             when (val result = homeDataSource.getSubCategories(categoryId)) {
                 is ApiResult.ErrorApiResult -> ApiResult.ErrorApiResult(result.error)
                 is ApiResult.SuccessApiResult -> {
-                    if (result.data?.categories.isNullOrEmpty()) {
-                        ApiResult.ErrorApiResult(AppErrors.ServerError())
-                    } else {
-                        ApiResult.SuccessApiResult(categoriesMapper.fromDataModels(result.data?.categories!!))
-                    }
+                    ApiResult.SuccessApiResult(categoriesMapper.fromDataModels(result.data?.categories!!))
                 }
             }
         } else {

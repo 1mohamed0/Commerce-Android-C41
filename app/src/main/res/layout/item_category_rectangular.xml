@@ -6,9 +6,15 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="category"
-            type="com.mis.route.e_commerce.data.models.category.CategoryDM" />
+            type="com.mis.route.e_commerce.domain.model.Category" />
+
+        <variable
+            name="isSelected"
+            type="Boolean" />
 
     </data>
 
@@ -22,7 +28,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/rv_bg"
+            android:background="@{isSelected ? @color/white: @color/rv_bg}"
             android:paddingStart="10dp"
             android:paddingTop="5dp"
             android:paddingEnd="0dp"
@@ -33,6 +39,7 @@
                 android:layout_width="7dp"
                 android:layout_height="0dp"
                 android:src="@drawable/shape_selected_category_bar"
+                android:visibility="@{isSelected ? View.VISIBLE: View.GONE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

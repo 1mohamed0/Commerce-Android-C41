@@ -9,6 +9,9 @@ import com.mis.route.e_commerce.domain.model.Category
 import com.mis.route.e_commerce.ui.base.BaseFragment
 import com.mis.route.e_commerce.ui.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>() {
@@ -48,16 +51,18 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>() {
     }
 
     private fun setUpObservers() {
-        categoriesVM.onEvent.observe(viewLifecycleOwner) {
-            when (it.categoriesApi) {
-                is Resource.ErrorState -> handleError(it.categoriesApi.error)
-                is Resource.SuccessState -> bindCategories(it.categoriesApi.data)
-                else -> {}
-            }
-            when (it.subCategoriesApi) {
-                is Resource.ErrorState -> handleError(it.subCategoriesApi.error)
-                is Resource.SuccessState -> bindSubCategories(it.subCategoriesApi.data)
-                else -> {}
+        CoroutineScope(Dispatchers.Main).launch {
+            categoriesVM.onEvent.collect {
+                when (it.categoriesApi) {
+                    is Resource.ErrorState -> handleError(it.categoriesApi.error)
+                    is Resource.SuccessState -> bindCategories(it.categoriesApi.data)
+                    else -> {}
+                }
+                when (it.subCategoriesApi) {
+                    is Resource.ErrorState -> handleError(it.subCategoriesApi.error)
+                    is Resource.SuccessState -> bindSubCategories(it.subCategoriesApi.data)
+                    else -> {}
+                }
             }
         }
     }

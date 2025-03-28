@@ -9,6 +9,8 @@ import com.mis.route.e_commerce.domain.model.Product
 import com.mis.route.e_commerce.domain.repositories.HomeRepository
 import com.mis.route.e_commerce.domain.utils.ApiResult
 import com.mis.route.e_commerce.domain.utils.AppErrors
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class HomeRepositoryImpl @Inject constructor(
@@ -34,8 +36,9 @@ class HomeRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getSubCategories(categoryId: String): ApiResult<List<Category>> {
-        return if (connectivity.isOnline()) {
+    override fun getSubCategories(categoryId: String): Flow<ApiResult<List<Category>>> = flow {
+        emit(
+            if (connectivity.isOnline()) {
             when (val result = homeDataSource.getSubCategories(categoryId)) {
                 is ApiResult.ErrorApiResult -> ApiResult.ErrorApiResult(result.error)
                 is ApiResult.SuccessApiResult -> {
@@ -44,7 +47,8 @@ class HomeRepositoryImpl @Inject constructor(
             }
         } else {
             ApiResult.ErrorApiResult(AppErrors.NetworkError())
-        }
+            }
+        )
     }
 
     override suspend fun getProducts(): ApiResult<List<Product>> {

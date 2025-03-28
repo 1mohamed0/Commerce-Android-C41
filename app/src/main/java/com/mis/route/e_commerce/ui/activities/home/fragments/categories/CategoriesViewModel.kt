@@ -30,7 +30,7 @@ class CategoriesViewModel @Inject constructor(
     }
 
     private fun loadCategories() {
-        _state.value = CategoriesEvents(categoriesApi = Resource.LoadingState())
+        _state.value = _state.value.copy(categoriesApi = Resource.LoadingState())
         viewModelScope.launch {
             when (val result = getCategoriesUseCase.execute()) {
                 is ApiResult.ErrorApiResult ->

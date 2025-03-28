@@ -1,5 +1,7 @@
 package com.mis.route.e_commerce.domain.model
 
+import java.io.Serializable
+
 
 data class Product(
     val sold: Int = 0,
@@ -17,4 +19,6 @@ data class Product(
     //todo:Request this change from BE
     val priceAfterDiscount: Double = 0.0,
     val category: Category
-)
+) : Serializable {
+    val soldText: String get() = "${sold} Sold"
+}

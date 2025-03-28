@@ -8,11 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mis.route.e_commerce.databinding.ItemProductBinding
 import com.mis.route.e_commerce.domain.model.Product
 
-class ProductsRecyclerAdapter(var productsList: List<Product?>?) :
+class ProductsRecyclerAdapter(var productsList: List<Product?>?, var onClick: (Product) -> Unit) :
     RecyclerView.Adapter<ProductsRecyclerAdapter.ViewHolder>() {
-    class ViewHolder(private val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemProductBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product?) {
             binding.product = product
+            binding.root.setOnClickListener {
+                product?.let {
+                    onClick.invoke(product)
+                }
+            }
             binding.productCover.setBackgroundColor(Color.WHITE)
             binding.addToFavorites.isVisible = true
         }

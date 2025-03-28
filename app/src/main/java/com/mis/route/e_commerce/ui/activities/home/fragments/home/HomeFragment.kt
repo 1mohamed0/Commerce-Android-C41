@@ -1,6 +1,7 @@
 package com.mis.route.e_commerce.ui.activities.home.fragments.home
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -12,6 +13,7 @@ import com.mis.route.e_commerce.domain.model.Product
 import com.mis.route.e_commerce.ui.activities.home.fragments.home.adapter.CategoriesRecyclerAdapter
 import com.mis.route.e_commerce.ui.activities.home.fragments.home.adapter.OfferViewPagerAdapter
 import com.mis.route.e_commerce.ui.activities.home.fragments.home.adapter.ProductsRecyclerAdapter
+import com.mis.route.e_commerce.ui.activities.product_details.ProductDetailsActivity
 import com.mis.route.e_commerce.ui.base.BaseFragment
 import com.mis.route.e_commerce.ui.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +26,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     // stop injection for now
     private var categoriesAdapter = CategoriesRecyclerAdapter(null)
-    private var productsAdapter = ProductsRecyclerAdapter(null)
+    private var productsAdapter = ProductsRecyclerAdapter(null) {
+        val intent = Intent(requireContext(), ProductDetailsActivity::class.java)
+        intent.putExtra(ProductDetailsActivity.PRODUCT_KEY, it)
+        startActivity(intent)
+    }
     private var isProductsAlreadyVisible = false
     private var offersAdapter = OfferViewPagerAdapter(null)
 

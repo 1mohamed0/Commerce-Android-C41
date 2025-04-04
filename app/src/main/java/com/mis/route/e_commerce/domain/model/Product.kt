@@ -18,7 +18,9 @@ data class Product(
     val id: String = "",
     //todo:Request this change from BE
     val priceAfterDiscount: Double = 0.0,
-    val category: Category
+    val category: Category,
+    var totalItemsInCart: Int = 0,
+    var totalPriceInCart: Double = 0.0
 ) : Serializable {
     val soldText: String get() = "${sold} Sold"
 }
